@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PREMIUM PACK — Men's Nike Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{--black:#080808;--white:#f5f5f0;--red:#E8001D;--gray:#141414;--mid:#252525;--muted:#777;--gold:#C9A84C;}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:'Barlow',sans-serif;font-weight:300;cursor:none;overflow-x:hidden;}
+
+/* CURSOR */
+.cursor{width:10px;height:10px;background:var(--red);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;mix-blend-mode:difference;transition:transform .1s;}
+.cursor-ring{width:38px;height:38px;border:1px solid rgba(255,255,255,.3);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transition:all .25s ease;}
+body:has(button:hover) .cursor,.cursor.hover{transform:scale(2.5);}
+
+/* PAGE SYSTEM */
+.page{display:none;min-height:100vh;}
+.page.active{display:block;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:72px;background:rgba(8,8,8,.97);border-bottom:1px solid rgba(255,255,255,.06);backdrop-filter:blur(10px);}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:5px;color:var(--white);text-decoration:none;cursor:none;}
+.nav-logo span{color:var(--red);}
+.nav-links{display:flex;gap:0;list-style:none;}
+.nav-links a{color:var(--white);text-decoration:none;font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:500;opacity:.55;transition:opacity .2s;padding:8px 18px;cursor:none;display:block;}
+.nav-links a:hover,.nav-links a.active{opacity:1;}
+.nav-links a.active{border-bottom:2px solid var(--red);}
+.nav-right{display:flex;align-items:center;gap:16px;}
+.nav-search-btn{background:none;border:none;color:var(--muted);font-size:18px;cursor:none;padding:8px;transition:color .2s;}
+.nav-search-btn:hover{color:var(--white);}
+.nav-cart{background:var(--red);color:white;border:none;padding:10px 26px;font-family:'Barlow',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:600;cursor:none;transition:background .2s;position:relative;}
+.nav-cart:hover{background:#c40019;}
+.cart-count{position:absolute;top:-6px;right:-6px;background:white;color:var(--red);border-radius:50%;width:18px;height:18px;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+
+/* HERO */
+.hero{height:100vh;display:grid;grid-template-columns:52% 48%;overflow:hidden;position:relative;padding-top:72px;}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:0 80px;background:var(--black);z-index:2;}
+.hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:24px;}
+.eyebrow-line{width:32px;height:1px;background:var(--red);}
+.hero-eyebrow span{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--red);font-weight:500;}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(72px,8.5vw,130px);line-height:.88;letter-spacing:2px;margin-bottom:30px;}
+.hero-title .out{color:transparent;-webkit-text-stroke:1.5px rgba(245,245,240,.2);}
+.hero-sub{font-size:14px;line-height:1.9;color:rgba(245,245,240,.5);max-width:380px;margin-bottom:50px;}
+.hero-btns{display:flex;gap:20px;align-items:center;}
+.btn-red{background:var(--red);color:white;border:none;padding:16px 44px;font-family:'Barlow',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:700;cursor:none;transition:all .2s;text-decoration:none;display:inline-block;}
+.btn-red:hover{background:#c40019;transform:translateY(-2px);}
+.btn-outline{color:var(--white);border:1px solid rgba(255,255,255,.25);background:none;padding:15px 36px;font-family:'Barlow',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:600;cursor:none;transition:all .2s;text-decoration:none;display:inline-block;}
+.btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,.05);}
+.btn-ghost{color:rgba(245,245,240,.55);text-decoration:none;font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:500;padding-bottom:3px;border-bottom:1px solid rgba(245,245,240,.18);transition:all .2s;cursor:none;}
+.btn-ghost:hover{color:var(--white);border-color:var(--white);}
+.hero-right{position:relative;overflow:hidden;}
+.hero-right img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 10s ease;filter:contrast(1.05) brightness(.88);}
+.hero:hover .hero-right img{transform:scale(1.04);}
+.hero-right::before{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(to right,var(--black) 0%,transparent 18%);}
+.hero-scroll{position:absolute;bottom:40px;left:80px;z-index:3;display:flex;align-items:center;gap:12px;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);}
+.scroll-bar{width:48px;height:1px;background:var(--red);animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{transform:scaleX(1);}50%{transform:scaleX(.3);transform-origin:left;}}
+.hero-stats{display:flex;gap:40px;margin-top:48px;padding-top:48px;border-top:1px solid var(--mid);}
+.hs-item .hs-num{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--red);}
+.hs-item .hs-lbl{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);}
+
+/* MARQUEE */
+.marquee-bar{background:var(--red);padding:13px 0;overflow:hidden;white-space:nowrap;}
+.marquee-inner{display:inline-block;animation:mscroll 22s linear infinite;}
+.marquee-inner span{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:5px;color:white;padding:0 28px;}
+.marquee-inner .sep{color:rgba(255,255,255,.35);font-size:12px;padding:0 8px;}
+@keyframes mscroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* SECTIONS */
+.section{padding:100px 52px;}
+.sec-label{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--red);margin-bottom:12px;}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,5vw,76px);line-height:1;letter-spacing:1px;}
+.sec-hd{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:56px;}
+.see-all{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);text-decoration:none;padding-bottom:2px;border-bottom:1px solid var(--mid);transition:color .2s,border-color .2s;cursor:none;}
+.see-all:hover{color:var(--white);border-color:rgba(255,255,255,.4);}
+
+/* PRODUCTS GRID */
+.pgrid{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:auto auto;gap:3px;}
+.pc{position:relative;overflow:hidden;background:var(--gray);cursor:none;}
+.pc:nth-child(1){grid-column:1/6;grid-row:1/3;}
+.pc:nth-child(2){grid-column:6/9;grid-row:1/2;}
+.pc:nth-child(3){grid-column:9/13;grid-row:1/2;}
+.pc:nth-child(4){grid-column:6/9;grid-row:2/3;}
+.pc:nth-child(5){grid-column:9/13;grid-row:2/3;}
+.pc img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .7s ease;min-height:280px;}
+.pc:nth-child(1) img{min-height:600px;}
+.pc:hover img{transform:scale(1.06);}
+.pc-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.92) 0%,rgba(8,8,8,.05) 50%,transparent);display:flex;flex-direction:column;justify-content:flex-end;padding:24px;}
+.pc-badge{position:absolute;top:18px;left:18px;background:var(--red);color:white;font-size:8px;letter-spacing:2px;text-transform:uppercase;font-weight:700;padding:4px 10px;}
+.pc-name{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;}
+.pc:nth-child(1) .pc-name{font-size:22px;}
+.pc-price{font-size:13px;color:var(--red);font-weight:600;margin-bottom:14px;}
+.pc-btn{background:var(--red);color:white;border:none;padding:11px;font-family:'Barlow',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;font-weight:700;cursor:none;width:100%;opacity:0;transform:translateY(10px);transition:all .25s ease;}
+.pc:hover .pc-btn{opacity:1;transform:translateY(0);}
+.pc-wishlist{position:absolute;top:18px;right:18px;background:rgba(8,8,8,.6);border:none;color:white;width:36px;height:36px;border-radius:50%;font-size:16px;cursor:none;opacity:0;transition:opacity .25s;display:flex;align-items:center;justify-content:center;}
+.pc:hover .pc-wishlist{opacity:1;}
+.pc-wishlist.liked{color:var(--red);}
+
+/* FULL BANNER */
+.fbanner{height:75vh;position:relative;overflow:hidden;margin:0;padding:0;}
+.fbanner img{width:100%;height:100%;object-fit:cover;object-position:center 35%;filter:brightness(.5) contrast(1.1);transition:transform 12s ease;}
+.fbanner:hover img{transform:scale(1.05);}
+.b-inner{position:absolute;inset:0;display:flex;align-items:center;padding:0 9%;}
+.b-content{max-width:560px;}
+.b-content h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,8vw,110px);line-height:.9;margin:16px 0 22px;}
+.b-content p{font-size:14px;line-height:1.8;color:rgba(245,245,240,.6);margin-bottom:36px;max-width:380px;}
+
+/* COLLECTIONS */
+.cgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;}
+.cc{position:relative;overflow:hidden;cursor:none;}
+.cc img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 40%;transition:transform .65s ease;filter:brightness(.85);}
+.cc:hover img{transform:scale(1.07);}
+.cc-label{position:absolute;bottom:0;left:0;right:0;padding:70px 22px 22px;background:linear-gradient(to top,rgba(8,8,8,.9) 0%,transparent);}
+.cc-label span{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--red);}
+.cc-label h3{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-top:4px;}
+
+/* STATS */
+.sbar{display:grid;grid-template-columns:repeat(4,1fr);background:var(--gray);border-top:1px solid var(--mid);border-bottom:1px solid var(--mid);}
+.st{padding:56px 48px;text-align:center;border-right:1px solid var(--mid);}
+.st:last-child{border-right:none;}
+.st-n{font-family:'Bebas Neue',sans-serif;font-size:68px;line-height:1;color:var(--red);}
+.st-l{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-top:6px;}
+
+/* NEW ARRIVALS */
+.agrid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;}
+.ac{position:relative;overflow:hidden;cursor:none;background:var(--gray);}
+.ac img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform .6s ease;}
+.ac:hover img{transform:scale(1.06);}
+.ac-info{padding:16px 18px 20px;}
+.ac-name{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:900;letter-spacing:2px;text-transform:uppercase;}
+.ac-price{font-size:13px;color:var(--red);margin-top:4px;font-weight:500;}
+.ac-add{margin-top:12px;width:100%;background:var(--mid);border:none;color:var(--white);padding:10px;font-family:'Barlow',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;font-weight:600;cursor:none;transition:background .2s;}
+.ac-add:hover,.ac:hover .ac-add{background:var(--red);}
+.ac-badge{position:absolute;top:14px;right:14px;background:var(--red);color:white;font-size:8px;letter-spacing:2px;padding:3px 8px;text-transform:uppercase;font-weight:700;}
+
+/* TESTIMONIALS */
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+.tc{background:var(--gray);padding:42px;position:relative;}
+.tc-q{font-family:'Bebas Neue',sans-serif;font-size:100px;line-height:1;color:var(--red);opacity:.13;position:absolute;top:10px;left:28px;}
+.tc-text{font-size:13px;line-height:1.9;color:rgba(245,245,240,.65);font-style:italic;margin:48px 0 28px;}
+.tc-author{display:flex;align-items:center;gap:14px;}
+.tc-av{width:44px;height:44px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:18px;flex-shrink:0;}
+.tc-stars{color:var(--red);font-size:11px;margin-bottom:3px;}
+.tc-name{font-size:13px;font-weight:600;}
+.tc-role{font-size:10px;color:var(--muted);}
+
+/* NEWSLETTER */
+.nl{background:var(--red);padding:90px 52px;text-align:center;}
+.nl h2{font-family:'Bebas Neue',sans-serif;font-size:72px;letter-spacing:3px;margin-bottom:12px;}
+.nl p{font-size:14px;color:rgba(255,255,255,.7);margin-bottom:40px;}
+.nl-form{display:flex;max-width:520px;margin:0 auto;}
+.nl-form input{flex:1;background:rgba(0,0,0,.2);border:none;border-bottom:2px solid rgba(255,255,255,.5);padding:16px 22px;color:white;font-family:'Barlow',sans-serif;font-size:13px;outline:none;}
+.nl-form input::placeholder{color:rgba(255,255,255,.5);letter-spacing:2px;}
+.nl-form button{background:black;color:white;border:none;padding:16px 32px;font-family:'Barlow',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;font-weight:700;cursor:none;transition:background .2s;}
+.nl-form button:hover{background:#111;}
+
+/* FOOTER */
+footer{background:#050505;padding:80px 52px 36px;border-top:1px solid var(--mid);}
+.ft{display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr;gap:64px;margin-bottom:60px;}
+.fb-logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:5px;color:var(--white);text-decoration:none;display:block;margin-bottom:20px;cursor:none;}
+.fb-logo span{color:var(--red);}
+.fb p{font-size:13px;line-height:1.8;color:var(--muted);max-width:280px;}
+.fb-contacts{margin-top:20px;display:flex;flex-direction:column;gap:10px;}
+.fb-contact-item{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--muted);text-decoration:none;transition:color .2s;cursor:none;}
+.fb-contact-item:hover{color:var(--white);}
+.fb-contact-item .ci{font-size:16px;}
+.fc h4{font-size:9px;letter-spacing:4px;text-transform:uppercase;font-weight:700;margin-bottom:20px;}
+.fc ul{list-style:none;}
+.fc li{margin-bottom:10px;}
+.fc a{color:var(--muted);text-decoration:none;font-size:13px;transition:color .2s;cursor:none;}
+.fc a:hover{color:var(--white);}
+.fb-bot{border-top:1px solid var(--mid);padding-top:28px;display:flex;justify-content:space-between;align-items:center;font-size:10px;color:var(--muted);letter-spacing:1px;}
+.social-row{display:flex;gap:16px;margin-top:24px;}
+.social-btn{width:38px;height:38px;border:1px solid var(--mid);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--muted);text-decoration:none;transition:all .2s;cursor:none;}
+.social-btn:hover{border-color:var(--red);color:var(--red);}
+
+/* FADE */
+.fu{opacity:0;transform:translateY(44px);transition:all .75s cubic-bezier(.22,1,.36,1);}
+.fu.in{opacity:1;transform:translateY(0);}
+
+/* MODAL */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:500;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;}
+.modal-bg.show{opacity:1;pointer-events:all;}
+.modal-box{background:var(--gray);padding:50px;width:500px;position:relative;transform:translateY(30px);transition:transform .3s;border-top:3px solid var(--red);}
+.modal-bg.show .modal-box{transform:translateY(0);}
+.modal-x{position:absolute;top:18px;right:22px;background:none;border:none;color:var(--muted);font-size:22px;cursor:none;transition:color .2s;}
+.modal-x:hover{color:var(--white);}
+.m-img{width:100%;height:200px;object-fit:cover;margin-bottom:20px;filter:brightness(.9);}
+.m-name{font-family:'Bebas Neue',sans-serif;font-size:30px;}
+.m-price{color:var(--red);font-weight:600;margin:4px 0 8px;font-size:18px;}
+.m-desc{font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:24px;}
+.sz-lbl{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.sz-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:28px;}
+.sz{background:var(--mid);border:1px solid transparent;color:var(--white);padding:12px 8px;text-align:center;font-family:'Barlow',sans-serif;font-size:13px;cursor:none;transition:all .15s;}
+.sz:hover,.sz.on{background:var(--red);border-color:var(--red);}
+.m-actions{display:flex;gap:8px;}
+.m-add{flex:1;background:var(--red);color:white;border:none;padding:16px;font-family:'Barlow',sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;font-weight:700;cursor:none;transition:background .2s;}
+.m-add:hover{background:#c40019;}
+.m-wa{background:#25D366;color:white;border:none;padding:16px 20px;font-size:20px;cursor:none;transition:background .2s;}
+.m-wa:hover{background:#1da851;}
+
+/* CART DRAWER */
+.cart-drawer{position:fixed;top:0;right:-480px;width:480px;height:100vh;background:var(--gray);z-index:400;transition:right .35s cubic-bezier(.22,1,.36,1);border-left:1px solid var(--mid);display:flex;flex-direction:column;}
+.cart-drawer.open{right:0;}
+.cart-head{padding:28px 32px;border-bottom:1px solid var(--mid);display:flex;justify-content:space-between;align-items:center;}
+.cart-head h3{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;}
+.cart-close{background:none;border:none;color:var(--muted);font-size:24px;cursor:none;}
+.cart-items{flex:1;overflow-y:auto;padding:24px 32px;}
+.cart-item{display:flex;gap:16px;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--mid);}
+.cart-item-img{width:80px;height:80px;object-fit:cover;flex-shrink:0;}
+.cart-item-info{flex:1;}
+.cart-item-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;letter-spacing:1px;text-transform:uppercase;}
+.cart-item-size{font-size:11px;color:var(--muted);margin-top:4px;}
+.cart-item-price{font-size:13px;color:var(--red);font-weight:600;margin-top:6px;}
+.cart-item-remove{background:none;border:none;color:var(--muted);font-size:18px;cursor:none;padding:4px;}
+.cart-footer{padding:24px 32px;border-top:1px solid var(--mid);}
+.cart-total{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
+.cart-total span:first-child{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);}
+.cart-total span:last-child{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--red);}
+.cart-checkout{width:100%;background:var(--red);color:white;border:none;padding:18px;font-family:'Barlow',sans-serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;font-weight:700;cursor:none;margin-bottom:10px;transition:background .2s;}
+.cart-checkout:hover{background:#c40019;}
+.cart-wa{width:100%;background:#25D366;color:white;border:none;padding:14px;font-family:'Barlow',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:600;cursor:none;transition:background .2s;}
+.cart-wa:hover{background:#1da851;}
+.cart-empty{text-align:center;padding:80px 32px;color:var(--muted);}
+.cart-empty-icon{font-size:60px;margin-bottom:16px;}
+.cart-empty p{font-size:13px;letter-spacing:1px;}
+
+/* OVERLAY */
+.drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:399;opacity:0;pointer-events:none;transition:opacity .35s;}
+.drawer-overlay.show{opacity:1;pointer-events:all;}
+
+/* SEARCH BAR */
+.search-bar{position:fixed;top:72px;left:0;right:0;z-index:250;background:rgba(20,20,20,.98);padding:24px 52px;border-bottom:1px solid var(--mid);transform:translateY(-100%);transition:transform .3s;display:flex;gap:16px;align-items:center;}
+.search-bar.open{transform:translateY(0);}
+.search-input{flex:1;background:var(--mid);border:none;color:var(--white);padding:14px 22px;font-family:'Barlow',sans-serif;font-size:14px;outline:none;}
+.search-input::placeholder{color:var(--muted);}
+.search-close{background:none;border:none;color:var(--muted);font-size:20px;cursor:none;}
+
+/* ======= SHOP PAGE ======= */
+.shop-hero{height:40vh;min-height:320px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding-bottom:60px;}
+.shop-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.4);}
+.shop-hero-content{position:relative;z-index:2;padding:0 52px;}
+.shop-hero-content p{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--red);margin-bottom:10px;}
+.shop-hero-content h1{font-family:'Bebas Neue',sans-serif;font-size:72px;letter-spacing:2px;}
+
+.shop-layout{display:grid;grid-template-columns:260px 1fr;gap:0;padding-top:72px;}
+.shop-sidebar{padding:40px 32px;border-right:1px solid var(--mid);position:sticky;top:72px;height:calc(100vh - 72px);overflow-y:auto;}
+.sidebar-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid var(--mid);}
+.filter-group{margin-bottom:32px;}
+.filter-label{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:block;}
+.filter-options{display:flex;flex-direction:column;gap:10px;}
+.filter-opt{display:flex;align-items:center;gap:10px;cursor:none;}
+.filter-opt input{accent-color:var(--red);cursor:none;}
+.filter-opt span{font-size:13px;color:rgba(245,245,240,.7);}
+.price-range{width:100%;accent-color:var(--red);cursor:none;}
+.price-val{font-size:12px;color:var(--muted);margin-top:8px;}
+.filter-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.ftag{background:var(--mid);border:1px solid transparent;color:rgba(245,245,240,.7);padding:6px 14px;font-size:10px;letter-spacing:2px;text-transform:uppercase;cursor:none;transition:all .15s;}
+.ftag:hover,.ftag.on{background:var(--red);border-color:var(--red);color:white;}
+.shop-main{padding:40px 52px;}
+.shop-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;padding-bottom:20px;border-bottom:1px solid var(--mid);}
+.shop-count{font-size:12px;color:var(--muted);letter-spacing:2px;}
+.sort-select{background:var(--mid);border:none;color:var(--white);padding:10px 16px;font-family:'Barlow',sans-serif;font-size:11px;letter-spacing:2px;cursor:none;outline:none;}
+.shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+.sp-card{position:relative;overflow:hidden;background:var(--gray);cursor:none;}
+.sp-card img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .6s ease;}
+.sp-card:hover img{transform:scale(1.05);}
+.sp-info{padding:14px 16px 18px;}
+.sp-name{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:900;letter-spacing:2px;text-transform:uppercase;}
+.sp-price{font-size:13px;color:var(--red);font-weight:600;margin-top:4px;}
+.sp-badge{position:absolute;top:12px;left:12px;background:var(--red);color:white;font-size:7px;letter-spacing:2px;text-transform:uppercase;font-weight:700;padding:3px 8px;}
+.sp-add{width:100%;background:var(--mid);border:none;color:var(--white);padding:10px;font-family:'Barlow',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;font-weight:600;cursor:none;transition:background .2s;margin-top:10px;}
+.sp-add:hover,.sp-card:hover .sp-add{background:var(--red);}
+
+/* ======= ABOUT PAGE ======= */
+.about-hero{height:60vh;position:relative;overflow:hidden;display:flex;align-items:center;padding-top:72px;}
+.about-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.35);}
+.about-hero-content{position:relative;z-index:2;padding:0 80px;max-width:700px;}
+.about-hero-content p{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--red);margin-bottom:16px;}
+.about-hero-content h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,7vw,100px);line-height:.9;margin-bottom:24px;}
+.about-hero-content p.sub{font-size:15px;line-height:1.8;color:rgba(245,245,240,.6);letter-spacing:0;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:3px;}
+.about-img-block{position:relative;overflow:hidden;}
+.about-img-block img{width:100%;height:500px;object-fit:cover;filter:brightness(.8);}
+.about-text-block{background:var(--gray);padding:80px 60px;display:flex;flex-direction:column;justify-content:center;}
+.about-text-block h2{font-family:'Bebas Neue',sans-serif;font-size:52px;line-height:.95;margin-bottom:28px;letter-spacing:1px;}
+.about-text-block p{font-size:14px;line-height:1.9;color:rgba(245,245,240,.6);margin-bottom:20px;}
+.about-values{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+.av-card{background:var(--gray);padding:48px 36px;}
+.av-icon{font-size:36px;margin-bottom:20px;}
+.av-title{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;margin-bottom:12px;color:var(--red);}
+.av-text{font-size:13px;line-height:1.8;color:var(--muted);}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+.team-card{position:relative;overflow:hidden;}
+.team-card img{width:100%;aspect-ratio:3/4;object-fit:cover;filter:grayscale(30%) brightness(.8);transition:all .5s;}
+.team-card:hover img{filter:grayscale(0%) brightness(.9);}
+.team-info{position:absolute;bottom:0;left:0;right:0;padding:40px 28px 28px;background:linear-gradient(to top,rgba(8,8,8,.9),transparent);}
+.team-name{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;letter-spacing:2px;text-transform:uppercase;}
+.team-role{font-size:10px;color:var(--red);letter-spacing:3px;text-transform:uppercase;margin-top:4px;}
+
+/* ======= CONTACT PAGE ======= */
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 72px);padding-top:72px;}
+.contact-left{background:var(--gray);padding:80px 60px;display:flex;flex-direction:column;justify-content:center;}
+.contact-left h1{font-family:'Bebas Neue',sans-serif;font-size:72px;line-height:.9;margin-bottom:12px;letter-spacing:2px;}
+.contact-left .sub{font-size:14px;color:var(--muted);margin-bottom:56px;line-height:1.7;}
+.contact-info{display:flex;flex-direction:column;gap:28px;}
+.ci-item{display:flex;gap:20px;align-items:flex-start;}
+.ci-icon{width:48px;height:48px;background:var(--red);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.ci-content label{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;}
+.ci-content a,.ci-content p{font-size:14px;color:var(--white);text-decoration:none;transition:color .2s;cursor:none;}
+.ci-content a:hover{color:var(--red);}
+.contact-wa-big{display:flex;align-items:center;gap:16px;background:#25D366;padding:20px 28px;margin-top:40px;text-decoration:none;cursor:none;transition:background .2s;}
+.contact-wa-big:hover{background:#1da851;}
+.contact-wa-big .wa-icon{font-size:28px;}
+.contact-wa-big .wa-text span{display:block;}
+.contact-wa-big .wa-text span:first-child{font-size:9px;letter-spacing:3px;text-transform:uppercase;opacity:.8;}
+.contact-wa-big .wa-text span:last-child{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;}
+.contact-right{padding:80px 60px;display:flex;flex-direction:column;justify-content:center;}
+.contact-right h2{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:2px;margin-bottom:36px;}
+.cf-group{margin-bottom:24px;}
+.cf-label{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:10px;}
+.cf-input,.cf-textarea,.cf-select{width:100%;background:var(--gray);border:none;border-bottom:2px solid var(--mid);color:var(--white);padding:14px 16px;font-family:'Barlow',sans-serif;font-size:14px;outline:none;transition:border-color .2s;}
+.cf-input:focus,.cf-textarea:focus{border-color:var(--red);}
+.cf-textarea{height:120px;resize:none;}
+.cf-select{cursor:none;}
+.cf-select option{background:var(--gray);}
+.cf-submit{width:100%;background:var(--red);color:white;border:none;padding:18px;font-family:'Barlow',sans-serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;font-weight:700;cursor:none;transition:background .2s;margin-top:8px;}
+.cf-submit:hover{background:#c40019;}
+.contact-map{height:300px;background:var(--gray);display:flex;align-items:center;justify-content:center;border-top:1px solid var(--mid);position:relative;overflow:hidden;}
+.contact-map img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%) brightness(.4);}
+.contact-map-label{position:absolute;font-family:'Bebas Neue',sans-serif;font-size:48px;letter-spacing:4px;color:rgba(255,255,255,.08);}
+
+/* ======= SIZE GUIDE PAGE ======= */
+.sizeguide-page{padding-top:72px;}
+.sg-hero{background:var(--gray);padding:80px 52px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.sg-hero-text p{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--red);margin-bottom:12px;}
+.sg-hero-text h1{font-family:'Bebas Neue',sans-serif;font-size:72px;line-height:.9;margin-bottom:20px;}
+.sg-hero-text p.desc{font-size:14px;line-height:1.8;color:var(--muted);letter-spacing:0;}
+.sg-hero-img img{width:100%;height:360px;object-fit:cover;filter:brightness(.8);}
+.sg-tables{padding:80px 52px;}
+.sg-table{width:100%;border-collapse:collapse;margin-bottom:56px;}
+.sg-table th{background:var(--red);color:white;padding:14px 20px;font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:600;text-align:left;}
+.sg-table td{padding:14px 20px;font-size:13px;border-bottom:1px solid var(--mid);color:rgba(245,245,240,.7);}
+.sg-table tr:hover td{background:var(--gray);}
+.sg-tips{background:var(--gray);padding:56px 52px;display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+.sg-tip{background:var(--mid);padding:36px 28px;}
+.sg-tip-num{font-family:'Bebas Neue',sans-serif;font-size:60px;line-height:1;color:rgba(232,0,29,.15);margin-bottom:12px;}
+.sg-tip h3{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:900;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.sg-tip p{font-size:12px;line-height:1.8;color:var(--muted);}
+
+/* WHATSAPP FLOAT */
+.wa-float{position:fixed;bottom:32px;right:32px;z-index:600;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;text-decoration:none;cursor:none;box-shadow:0 4px 20px rgba(37,211,102,.35);animation:waPulse 2.5s ease-in-out infinite;}
+@keyframes waPulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.35);}50%{box-shadow:0 4px 40px rgba(37,211,102,.6);}}
+.wa-tooltip{position:absolute;right:70px;background:rgba(20,20,20,.95);color:white;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:8px 14px;white-space:nowrap;opacity:0;transition:opacity .2s;pointer-events:none;}
+.wa-float:hover .wa-tooltip{opacity:1;}
+
+/* TOAST */
+.toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--gray);border:1px solid var(--mid);border-left:3px solid var(--red);padding:14px 24px;font-size:12px;letter-spacing:2px;text-transform:uppercase;z-index:700;opacity:0;transition:all .3s;pointer-events:none;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* LOADING */
+.page-loader{position:fixed;inset:0;background:var(--black);z-index:1000;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s;}
+.page-loader.done{opacity:0;pointer-events:none;}
+.loader-logo{font-family:'Bebas Neue',sans-serif;font-size:52px;letter-spacing:8px;color:var(--white);margin-bottom:32px;}
+.loader-logo span{color:var(--red);}
+.loader-bar{width:200px;height:2px;background:var(--mid);}
+.loader-fill{width:0%;height:100%;background:var(--red);transition:width .05s;}
+</style>
+</head>
+<body>
+
+<!-- PAGE LOADER -->
+<div class="page-loader" id="loader">
+  <div class="loader-logo">PREMIUM<span>.</span>PACK</div>
+  <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+</div>
+
+<!-- CURSOR -->
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="ring"></div>
+
+<!-- WHATSAPP FLOAT -->
+<a class="wa-float" href="https://wa.me/923108282961" target="_blank" title="Chat on WhatsApp">
+  <span>💬</span>
+  <span class="wa-tooltip">WhatsApp Us</span>
+</a>
+
+<!-- TOAST -->
+<div class="toast" id="toast">Added to Cart!</div>
+
+<!-- DRAWER OVERLAY -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeCart()"></div>
+
+<!-- SEARCH BAR -->
+<div class="search-bar" id="searchBar">
+  <input class="search-input" type="text" placeholder="Search Nike shoes..." id="searchInput" oninput="doSearch(this.value)"/>
+  <button class="search-close" onclick="closeSearch()">✕</button>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo" onclick="navigate('home')">PREMIUM<span>.</span>PACK</a>
+  <ul class="nav-links">
+    <li><a href="#" onclick="navigate('home')" id="nav-home" class="active">Home</a></li>
+    <li><a href="#" onclick="navigate('shop')" id="nav-shop">Shop</a></li>
+    <li><a href="#" onclick="navigate('about')" id="nav-about">About</a></li>
+    <li><a href="#" onclick="navigate('sizeguide')" id="nav-sizeguide">Size Guide</a></li>
+    <li><a href="#" onclick="navigate('contact')" id="nav-contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-search-btn" onclick="toggleSearch()">⌕</button>
+    <button class="nav-cart" onclick="openCart()">
+      🛍 Cart
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- CART DRAWER -->
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-head">
+    <h3>Your Cart</h3>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">
+      <div class="cart-empty-icon">👟</div>
+      <p>Your cart is empty</p>
+    </div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Total</span>
+      <span id="cartTotal">$0</span>
+    </div>
+    <button class="cart-checkout" onclick="checkoutWA()">Checkout via WhatsApp</button>
+    <button class="cart-wa" onclick="checkoutWA()">💬 Order on WhatsApp: +92 310 8282961</button>
+  </div>
+</div>
+
+<!-- ========================= PAGE: HOME ========================= -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow"><div class="eyebrow-line"></div><span>Men's Exclusive Nike</span></div>
+      <h1 class="hero-title">MOVE<br><span class="out">LIKE</span><br>LEGEND</h1>
+      <p class="hero-sub">Pakistan's most premium Nike reseller. Every pair authenticated. Every style curated. Only for men who lead.</p>
+      <div class="hero-btns">
+        <a href="#" class="btn-red" onclick="navigate('shop')">Shop the Drop</a>
+        <a href="#" class="btn-ghost" onclick="navigate('shop')">View Collections</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hs-item"><div class="hs-num">500+</div><div class="hs-lbl">Nike Models</div></div>
+        <div class="hs-item"><div class="hs-num">12K+</div><div class="hs-lbl">Customers</div></div>
+        <div class="hs-item"><div class="hs-num">100%</div><div class="hs-lbl">Authentic</div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1200&h=900&fit=crop&q=90" alt="Nike Air Max"/>
+    </div>
+    <div class="hero-scroll"><div class="scroll-bar"></div><span>Scroll</span></div>
+  </div>
+
+  <!-- MARQUEE -->
+  <div class="marquee-bar">
+    <div class="marquee-inner">
+      <span>AIR MAX 90</span><span class="sep">✦</span><span>JORDAN 1</span><span class="sep">✦</span><span>AIR FORCE 1</span><span class="sep">✦</span><span>DUNK LOW</span><span class="sep">✦</span><span>REACT INFINITY</span><span class="sep">✦</span><span>PEGASUS 40</span><span class="sep">✦</span><span>ZOOM FLY</span><span class="sep">✦</span><span>PREMIUM PACK</span><span class="sep">✦</span>
+      <span>AIR MAX 90</span><span class="sep">✦</span><span>JORDAN 1</span><span class="sep">✦</span><span>AIR FORCE 1</span><span class="sep">✦</span><span>DUNK LOW</span><span class="sep">✦</span><span>REACT INFINITY</span><span class="sep">✦</span><span>PEGASUS 40</span><span class="sep">✦</span><span>ZOOM FLY</span><span class="sep">✦</span><span>PREMIUM PACK</span><span class="sep">✦</span>
+    </div>
+  </div>
+
+  <!-- FEATURED DROPS -->
+  <div class="section" id="featured">
+    <div class="sec-hd fu">
+      <div><p class="sec-label">This Season's Heat</p><h2 class="sec-title">FEATURED DROPS</h2></div>
+      <a href="#" class="see-all" onclick="navigate('shop')">View All →</a>
+    </div>
+    <div class="pgrid fu">
+      <div class="pc" onclick="openM('Nike Air Max 90','$189','https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&h=600&fit=crop','The iconic Air Max 90 — legendary cushioning meets street-ready style.')">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&h=1000&fit=crop&q=88" alt="Nike Air Max 90"/>
+        <button class="pc-wishlist" onclick="event.stopPropagation();toggleWish(this)">♡</button>
+        <div class="pc-badge">Best Seller</div>
+        <div class="pc-ov"><p class="pc-name">Nike Air Max 90</p><p class="pc-price">$189</p><button class="pc-btn">Select Size & Add</button></div>
+      </div>
+      <div class="pc" onclick="openM('Nike Dunk Low','$165','https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=600&h=400&fit=crop','The Dunk Low — clean, classic, always in demand.')">
+        <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=600&h=450&fit=crop&q=88" alt="Nike Dunk Low"/>
+        <button class="pc-wishlist" onclick="event.stopPropagation();toggleWish(this)">♡</button>
+        <div class="pc-badge">New</div>
+        <div class="pc-ov"><p class="pc-name">Nike Dunk Low</p><p class="pc-price">$165</p><button class="pc-btn">Select Size & Add</button></div>
+      </div>
+      <div class="pc" onclick="openM('Air Force 1 Low','$175','https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600&h=400&fit=crop','The AF1 — the shoe that never goes out of style.')">
+        <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600&h=450&fit=crop&q=88" alt="Air Force 1"/>
+        <button class="pc-wishlist" onclick="event.stopPropagation();toggleWish(this)">♡</button>
+        <div class="pc-ov"><p class="pc-name">Air Force 1 Low</p><p class="pc-price">$175</p><button class="pc-btn">Select Size & Add</button></div>
+      </div>
+      <div class="pc" onclick="openM('Nike React Vision','$199','https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=600&h=400&fit=crop','Futuristic design meets React foam cushioning.')">
+        <img src="https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=600&h=450&fit=crop&q=88" alt="Nike React Vision"/>
+        <button class="pc-wishlist" onclick="event.stopPropagation();toggleWish(this)">♡</button>
+        <div class="pc-badge">Limited</div>
+        <div class="pc-ov"><p class="pc-name">Nike React Vision</p><p class="pc-price">$199</p><button class="pc-btn">Select Size & Add</button></div>
+      </div>
+      <div class="pc" onclick="openM('Nike Pegasus 40','$135','https://images.unsplash.com/photo-1605408499391-6368c628ef42?w=600&h=400&fit=crop','Built for runners. Worn by legends. The Pegasus 40.')">
+        <img src="https://images.unsplash.com/photo-1605408499391-6368c628ef42?w=600&h=450&fit=crop&q=88" alt="Nike Pegasus 40"/>
+        <button class="pc-wishlist" onclick="event.stopPropagation();toggleWish(this)">♡</button>
+        <div class="pc-ov"><p class="pc-name">Nike Pegasus 40</p><p class="pc-price">$135</p><button class="pc-btn">Select Size & Add</button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BANNER 1 -->
+  <div class="fbanner">
+    <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=1800&h=800&fit=crop&q=88" alt="Men Nike street"/>
+    <div class="b-inner">
+      <div class="b-content fu">
+        <p class="sec-label">Authentic. Always.</p>
+        <h2>BUILT FOR<br>THE STREET</h2>
+        <p>Every pair is 100% authentic Nike. Sourced from verified distributors, shipped directly to you.</p>
+        <a href="#" class="btn-red" onclick="navigate('shop')">Explore All</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- COLLECTIONS -->
+  <div class="section" id="collections">
+    <div class="sec-hd fu">
+      <div><p class="sec-label">Shop By Style</p><h2 class="sec-title">COLLECTIONS</h2></div>
+    </div>
+    <div class="cgrid fu">
+      <div class="cc" onclick="navigate('shop')">
+        <img src="https://images.unsplash.com/photo-1556048219-bb6978360b84?w=500&h=700&fit=crop&q=88" alt="Lifestyle"/>
+        <div class="cc-label"><span>14 Styles</span><h3>Lifestyle</h3></div>
+      </div>
+      <div class="cc" onclick="navigate('shop')">
+        <img src="https://images.unsplash.com/photo-1539185441755-769473a23570?w=500&h=700&fit=crop&q=88" alt="Running"/>
+        <div class="cc-label"><span>10 Styles</span><h3>Running</h3></div>
+      </div>
+      <div class="cc" onclick="navigate('shop')">
+        <img src="https://images.unsplash.com/photo-1579338559194-a162d19bf842?w=500&h=700&fit=crop&q=88" alt="Basketball"/>
+        <div class="cc-label"><span>7 Styles</span><h3>Basketball</h3></div>
+      </div>
+      <div class="cc" onclick="navigate('shop')">
+        <img src="sports nike.png" alt="Training"/>
+        <div class="cc-label"><span>9 Styles</span><h3>Training</h3></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="sbar fu">
+    <div class="st"><div class="st-n">500+</div><div class="st-l">Nike Models</div></div>
+    <div class="st"><div class="st-n">12K+</div><div class="st-l">Happy Customers</div></div>
+    <div class="st"><div class="st-n">100%</div><div class="st-l">Authentic</div></div>
+    <div class="st"><div class="st-n">48H</div><div class="st-l">Fast Delivery</div></div>
+  </div>
+
+  <!-- BANNER 2 -->
+  <div class="fbanner" style="height:62vh">
+    <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=1800&h=700&fit=crop&q=88" alt="Limited Edition"/>
+    <div class="b-inner" style="justify-content:flex-end;">
+      <div class="b-content fu" style="text-align:right;">
+        <p class="sec-label">Rare Finds</p>
+        <h2>LIMITED<br>EDITION</h2>
+        <p style="margin-left:auto;">Once they're gone, they're gone. Secure your exclusive pairs now.</p>
+        <a href="#" class="btn-red" onclick="navigate('shop')">Shop Rare Pairs</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEW ARRIVALS -->
+  <div class="section" id="new">
+    <div class="sec-hd fu">
+      <div><p class="sec-label">Just Landed</p><h2 class="sec-title">NEW ARRIVALS</h2></div>
+      <a href="#" class="see-all" onclick="navigate('shop')">See All New →</a>
+    </div>
+    <div class="agrid fu">
+      <div class="ac" onclick="openM('Jordan 1 Retro High','$229','https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&h=500&fit=crop','The iconic Jordan 1 Retro High — heritage meets hype.')">
+        <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&h=600&fit=crop&q=88" alt="Jordan 1"/>
+        <div class="ac-badge">New</div>
+        <div class="ac-info"><p class="ac-name">Jordan 1 Retro High</p><p class="ac-price">$229</p><button class="ac-add">Quick Add</button></div>
+      </div>
+      <div class="ac" onclick="openM('Nike Air Zoom Tempo','$155','https://images.unsplash.com/photo-1607522370275-f14206abe5d3?w=600&h=500&fit=crop','Speed meets style. The Air Zoom Tempo NEXT%.')">
+        <img src="https://images.unsplash.com/photo-1607522370275-f14206abe5d3?w=600&h=600&fit=crop&q=88" alt="Air Zoom"/>
+        <div class="ac-badge">New</div>
+        <div class="ac-info"><p class="ac-name">Nike Air Zoom Tempo</p><p class="ac-price">$155</p><button class="ac-add">Quick Add</button></div>
+      </div>
+      <div class="ac" onclick="openM('Nike Free Run 5.0','$119','https://images.unsplash.com/photo-1612872087720-bb4b2a7f159f?w=600&h=500&fit=crop','Barefoot feel. Maximum freedom. The Free Run 5.0.')">
+        <img src="Nike Free Run 5.0.avif" alt="Nike Free Run"/>
+        <div class="ac-info"><p class="ac-name">Nike Free Run 5.0</p><p class="ac-price">$119</p><button class="ac-add">Quick Add</button></div>
+      </div>
+      <div class="ac" onclick="openM('Nike Blazer Mid 77','$145','https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=500&fit=crop','Old school soul. New school edge. Nike Blazer Mid 77.')">
+        <img src="nike blazer 77.webp" alt="Nike Blazer"/>
+        <div class="ac-badge">Hot</div>
+        <div class="ac-info"><p class="ac-name">Nike Blazer Mid 77</p><p class="ac-price">$145</p><button class="ac-add">Quick Add</button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="section" style="background:var(--gray);padding:80px 52px;" id="about">
+    <div class="sec-hd fu"><div><p class="sec-label">Real Buyers</p><h2 class="sec-title">WHAT THEY SAY</h2></div></div>
+    <div class="tgrid fu">
+      <div class="tc"><div class="tc-q">"</div><p class="tc-text">Got my Air Max 90s delivered in 2 days. Completely legit pair, quality is exactly as shown. Premium Pack is my go-to for every drop now.</p><div class="tc-author"><div class="tc-av">AK</div><div><div class="tc-stars">★★★★★</div><p class="tc-name">Ahmed K.</p><p class="tc-role">Karachi — Verified Buyer</p></div></div></div>
+      <div class="tc"><div class="tc-q">"</div><p class="tc-text">Best sneaker store in Pakistan, period. Every shoe authenticated before shipping. Zero fakes, 100% heat, unmatched customer service.</p><div class="tc-author"><div class="tc-av">UB</div><div><div class="tc-stars">★★★★★</div><p class="tc-name">Usman B.</p><p class="tc-role">Lahore — Verified Buyer</p></div></div></div>
+      <div class="tc"><div class="tc-q">"</div><p class="tc-text">Ordered Dunk Lows and Jordan 1s. Both came flawless. The website is fire, the shoes are fire. Will be back for every single drop.</p><div class="tc-author"><div class="tc-av">MJ</div><div><div class="tc-stars">★★★★★</div><p class="tc-name">Muneeb J.</p><p class="tc-role">Islamabad — Verified Buyer</p></div></div></div>
+    </div>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div class="nl fu">
+    <h2>DROP ALERTS</h2>
+    <p>First in line for every new Nike drop. No spam. Just heat.</p>
+    <div class="nl-form">
+      <input type="email" placeholder="Enter your email"/>
+      <button type="button" onclick="subscribeNL(this)">Notify Me</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="ft">
+      <div class="fb">
+        <a class="fb-logo" onclick="navigate('home')">PREMIUM<span>.</span>PACK</a>
+        <p>Pakistan's most trusted Nike men's reseller. Curated drops, authenticated pairs, delivered to your door.</p>
+        <div class="fb-contacts">
+          <a class="fb-contact-item" href="https://wa.me/923108282961" target="_blank"><span class="ci">💬</span>+92 310 8282961</a>
+          <a class="fb-contact-item" href="mailto:khalid.ahmed143@yahoo.com"><span class="ci">✉</span>khalid.ahmed143@yahoo.com</a>
+        </div>
+        <div class="social-row">
+          <a class="social-btn" href="https://wa.me/923108282961" target="_blank">💬</a>
+          <a class="social-btn" href="#">📸</a>
+          <a class="social-btn" href="#">🐦</a>
+        </div>
+      </div>
+      <div class="fc"><h4>Shop</h4><ul><li><a href="#" onclick="navigate('shop')">New Arrivals</a></li><li><a href="#" onclick="navigate('shop')">Best Sellers</a></li><li><a href="#" onclick="navigate('shop')">Limited Edition</a></li><li><a href="#" onclick="navigate('shop')">Sale</a></li></ul></div>
+      <div class="fc"><h4>Support</h4><ul><li><a href="#" onclick="navigate('sizeguide')">Size Guide</a></li><li><a href="#" onclick="navigate('contact')">Shipping Info</a></li><li><a href="#" onclick="navigate('contact')">Returns</a></li><li><a href="#" onclick="navigate('contact')">Contact Us</a></li></ul></div>
+      <div class="fc"><h4>Company</h4><ul><li><a href="#" onclick="navigate('about')">About Us</a></li><li><a href="#">Authenticity</a></li><li><a href="#">Instagram</a></li><li><a href="#">Privacy Policy</a></li></ul></div>
+    </div>
+    <div class="fb-bot"><span>© 2026 Premium Pack. All rights reserved.</span><span>Pakistan's #1 Nike Men's Reseller</span></div>
+  </footer>
+</div>
+
+<!-- ========================= PAGE: SHOP ========================= -->
+<div class="page" id="page-shop">
+  <div class="shop-hero">
+    <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=1800&h=600&fit=crop&q=88" alt="Shop"/>
+    <div class="shop-hero-content">
+      <p class="sec-label">Men's Exclusive</p>
+      <h1 style="font-family:'Bebas Neue',sans-serif;font-size:72px;letter-spacing:2px;color:white;">ALL NIKE SHOES</h1>
+    </div>
+  </div>
+  <div class="shop-layout">
+    <div class="shop-sidebar">
+      <div class="sidebar-title">FILTERS</div>
+      <div class="filter-group">
+        <span class="filter-label">Category</span>
+        <div class="filter-tags">
+          <button class="ftag on" onclick="filterCat(this,'all')">All</button>
+          <button class="ftag" onclick="filterCat(this,'lifestyle')">Lifestyle</button>
+          <button class="ftag" onclick="filterCat(this,'running')">Running</button>
+          <button class="ftag" onclick="filterCat(this,'basketball')">Basketball</button>
+          <button class="ftag" onclick="filterCat(this,'training')">Training</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Size (US Men's)</span>
+        <div class="filter-tags" style="gap:6px;">
+          <button class="ftag" onclick="this.classList.toggle('on')">7</button>
+          <button class="ftag" onclick="this.classList.toggle('on')">8</button>
+          <button class="ftag" onclick="this.classList.toggle('on')">9</button>
+          <button class="ftag" onclick="this.classList.toggle('on')">10</button>
+          <button class="ftag" onclick="this.classList.toggle('on')">11</button>
+          <button class="ftag" onclick="this.classList.toggle('on')">12</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Max Price: <span id="priceVal">$300</span></span>
+        <input class="price-range" type="range" min="100" max="400" value="300" oninput="document.getElementById('priceVal').textContent='$'+this.value"/>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Sort By</span>
+        <div class="filter-options">
+          <label class="filter-opt"><input type="radio" name="sort" checked/><span>Featured</span></label>
+          <label class="filter-opt"><input type="radio" name="sort"/><span>Price: Low to High</span></label>
+          <label class="filter-opt"><input type="radio" name="sort"/><span>Price: High to Low</span></label>
+          <label class="filter-opt"><input type="radio" name="sort"/><span>Newest First</span></label>
+        </div>
+      </div>
+    </div>
+    <div class="shop-main">
+      <div class="shop-toolbar">
+        <span class="shop-count" id="shopCount">Showing 12 products</span>
+        <select class="sort-select"><option>Featured</option><option>Price: Low–High</option><option>Price: High–Low</option><option>Newest</option></select>
+      </div>
+      <div class="shop-grid" id="shopGrid">
+        <!-- Products injected by JS -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========================= PAGE: ABOUT ========================= -->
+<div class="page" id="page-about">
+  <div style="padding-top:72px;">
+    <div class="about-hero">
+      <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1800&h=700&fit=crop&q=88" alt="About"/>
+      <div class="about-hero-content">
+        <p>Our Story</p>
+        <h1>WE LIVE &<br>BREATHE NIKE</h1>
+        <p class="sub">Premium Pack was born from a passion for authentic Nike footwear and a mission to bring the world's best sneakers to Pakistan's most discerning men.</p>
+      </div>
+    </div>
+    <div class="about-grid">
+      <div class="about-img-block">
+        <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=800&h=500&fit=crop&q=88" alt="About"/>
+      </div>
+      <div class="about-text-block">
+        <p class="sec-label">Who We Are</p>
+        <h2>PAKISTAN'S<br>PREMIER NIKE<br>RESELLER</h2>
+        <p>Founded in 2020, Premium Pack has grown from a small passion project into Pakistan's most trusted source for authentic Nike men's footwear. Every pair we sell is 100% genuine — no replicas, no fakes, ever.</p>
+        <p>We source directly from authorized Nike distributors across the globe, ensuring you get the latest drops before anyone else in Pakistan. From Air Max to Jordan 1s, we carry the most sought-after models at fair, transparent prices.</p>
+        <a href="#" class="btn-red" style="margin-top:8px;" onclick="navigate('shop')">Shop Now</a>
+      </div>
+    </div>
+    <div class="about-values">
+      <div class="av-card fu">
+        <div class="av-icon">✅</div>
+        <div class="av-title">100% Authentic</div>
+        <p class="av-text">Every pair is verified and authenticated before it reaches your door. We carry zero replicas — only genuine Nike products from authorized sources.</p>
+      </div>
+      <div class="av-card fu">
+        <div class="av-icon">🚀</div>
+        <div class="av-title">Fast Delivery</div>
+        <p class="av-text">We ship across all of Pakistan within 24–48 hours. Express delivery available to Karachi, Lahore, and Islamabad for same-day drops.</p>
+      </div>
+      <div class="av-card fu">
+        <div class="av-icon">👑</div>
+        <div class="av-title">Premium Service</div>
+        <p class="av-text">Direct WhatsApp support, easy size guidance, and hassle-free returns. We treat every customer like a VIP because you are one.</p>
+      </div>
+    </div>
+    <div class="section" style="background:var(--gray);">
+      <div class="sec-hd fu"><div><p class="sec-label">The Team</p><h2 class="sec-title">MEET THE CREW</h2></div></div>
+      <div class="team-grid fu">
+        <div class="team-card">
+          <img src="Khalid.jpg" alt="Khalid"/>
+          <div class="team-info"><p class="team-name">Khalid Ahmed</p><p class="team-role">Founder & CEO</p></div>
+        </div>
+        <div class="team-card">
+          <img src="Gul Hassan.png" alt="Gul Hassan"/>
+          <div class="team-info"><p class="team-name">Gul Hassan</p><p class="team-role">Head of Sourcing</p></div>
+        </div>
+        <div class="team-card">
+          <img src="Khalid.jpg" alt="Khalid"/>
+          <div class="team-info"><p class="team-name">Khalid</p><p class="team-role">Customer Relations</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="nl fu"><h2>JOIN THE FAM</h2><p>Get first access to every drop and exclusive deals.</p><div class="nl-form"><input type="email" placeholder="Enter your email"/><button onclick="subscribeNL(this)">Subscribe</button></div></div>
+    <footer>
+      <div class="ft">
+        <div class="fb"><a class="fb-logo" onclick="navigate('home')">PREMIUM<span>.</span>PACK</a><p>Pakistan's most trusted Nike men's reseller.</p><div class="fb-contacts"><a class="fb-contact-item" href="https://wa.me/923108282961" target="_blank"><span class="ci">💬</span>+92 310 8282961</a><a class="fb-contact-item" href="mailto:khalid.ahmed143@yahoo.com"><span class="ci">✉</span>khalid.ahmed143@yahoo.com</a></div></div>
+        <div class="fc"><h4>Shop</h4><ul><li><a onclick="navigate('shop')">New Arrivals</a></li><li><a onclick="navigate('shop')">Best Sellers</a></li></ul></div>
+        <div class="fc"><h4>Support</h4><ul><li><a onclick="navigate('contact')">Contact</a></li><li><a onclick="navigate('sizeguide')">Size Guide</a></li></ul></div>
+        <div class="fc"><h4>Follow</h4><ul><li><a href="#">Instagram</a></li><li><a href="https://wa.me/923108282961">WhatsApp</a></li></ul></div>
+      </div>
+      <div class="fb-bot"><span>© 2026 Premium Pack.</span><span>Pakistan's #1 Nike Men's Reseller</span></div>
+    </footer>
+  </div>
+</div>
+
+<!-- ========================= PAGE: CONTACT ========================= -->
+<div class="page" id="page-contact">
+  <div class="contact-layout">
+    <div class="contact-left">
+      <p class="sec-label">Get In Touch</p>
+      <h1>LET'S<br>TALK<br>KICKS</h1>
+      <p class="sub">Have a question about a specific pair? Want to place a bulk order? We're here for you — reach out any time.</p>
+      <div class="contact-info">
+        <div class="ci-item">
+          <div class="ci-icon">💬</div>
+          <div class="ci-content">
+            <label>WhatsApp</label>
+            <a href="https://wa.me/923108282961" target="_blank">+92 310 8282961</a>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">✉</div>
+          <div class="ci-content">
+            <label>Email</label>
+            <a href="mailto:khalid.ahmed143@yahoo.com">khalid.ahmed143@yahoo.com</a>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">🕐</div>
+          <div class="ci-content">
+            <label>Hours</label>
+            <p>Mon–Sat: 10AM – 8PM PKT</p>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">📦</div>
+          <div class="ci-content">
+            <label>Delivery</label>
+            <p>All Pakistan — 24 to 48 Hours</p>
+          </div>
+        </div>
+      </div>
+      <a class="contact-wa-big" href="https://wa.me/923108282961" target="_blank">
+        <span class="wa-icon">💬</span>
+        <div class="wa-text">
+          <span>Chat Now on</span>
+          <span>WhatsApp</span>
+        </div>
+      </a>
+    </div>
+    <div class="contact-right">
+      <h2>SEND A MESSAGE</h2>
+      <div class="cf-group"><label class="cf-label">Your Name</label><input class="cf-input" type="text" placeholder="e.g. Ahmed Khan"/></div>
+      <div class="cf-group"><label class="cf-label">Phone / WhatsApp</label><input class="cf-input" type="tel" placeholder="+92 3xx xxxxxxx"/></div>
+      <div class="cf-group"><label class="cf-label">Email</label><input class="cf-input" type="email" placeholder="your@email.com"/></div>
+      <div class="cf-group">
+        <label class="cf-label">Interested In</label>
+        <select class="cf-select">
+          <option>Nike Air Max 90</option>
+          <option>Nike Dunk Low</option>
+          <option>Air Force 1 Low</option>
+          <option>Jordan 1 Retro High</option>
+          <option>Nike Pegasus 40</option>
+          <option>Other / Custom Order</option>
+        </select>
+      </div>
+      <div class="cf-group"><label class="cf-label">Message</label><textarea class="cf-textarea" placeholder="Tell us what you're looking for..."></textarea></div>
+      <button class="cf-submit" onclick="submitContact()">Send Message</button>
+    </div>
+  </div>
+  <footer style="background:#050505;padding:40px 52px;border-top:1px solid var(--mid);">
+    <div class="fb-bot"><span>© 2026 Premium Pack. All rights reserved.</span><span><a href="https://wa.me/923108282961" style="color:var(--red);text-decoration:none;">+92 310 8282961</a> | <a href="mailto:khalid.ahmed143@yahoo.com" style="color:var(--red);text-decoration:none;">khalid.ahmed143@yahoo.com</a></span></div>
+  </footer>
+</div>
+
+<!-- ========================= PAGE: SIZE GUIDE ========================= -->
+<div class="page" id="page-sizeguide">
+  <div class="sizeguide-page">
+    <div class="sg-hero">
+      <div class="sg-hero-text">
+        <p>Find Your Fit</p>
+        <h1>SIZE<br>GUIDE</h1>
+        <p class="desc">Use our comprehensive Nike size chart to find your perfect fit. When in doubt, WhatsApp us — we'll help you choose the right size before you order.</p>
+        <a href="https://wa.me/923108282961" class="btn-red" target="_blank" style="margin-top:28px;display:inline-block;">Ask on WhatsApp</a>
+      </div>
+      <div class="sg-hero-img">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=700&h=400&fit=crop&q=88" alt="Size Guide"/>
+      </div>
+    </div>
+    <div class="sg-tables">
+      <p class="sec-label">US / UK / EU Conversion</p>
+      <h2 class="sec-title" style="margin-bottom:32px;">MEN'S SIZES</h2>
+      <table class="sg-table">
+        <thead><tr><th>US Size</th><th>UK Size</th><th>EU Size</th><th>CM (Foot Length)</th><th>Fit Notes</th></tr></thead>
+        <tbody>
+          <tr><td>7</td><td>6</td><td>40</td><td>25.0 cm</td><td>Standard fit</td></tr>
+          <tr><td>7.5</td><td>6.5</td><td>40.5</td><td>25.5 cm</td><td>Standard fit</td></tr>
+          <tr><td>8</td><td>7</td><td>41</td><td>26.0 cm</td><td>Standard fit</td></tr>
+          <tr><td>8.5</td><td>7.5</td><td>42</td><td>26.5 cm</td><td>Standard fit</td></tr>
+          <tr><td>9</td><td>8</td><td>42.5</td><td>27.0 cm</td><td>Standard fit</td></tr>
+          <tr><td>9.5</td><td>8.5</td><td>43</td><td>27.5 cm</td><td>Standard fit</td></tr>
+          <tr><td>10</td><td>9</td><td>44</td><td>28.0 cm</td><td>Standard fit</td></tr>
+          <tr><td>10.5</td><td>9.5</td><td>44.5</td><td>28.5 cm</td><td>Standard fit</td></tr>
+          <tr><td>11</td><td>10</td><td>45</td><td>29.0 cm</td><td>Standard fit</td></tr>
+          <tr><td>12</td><td>11</td><td>46</td><td>30.0 cm</td><td>Standard fit</td></tr>
+          <tr><td>13</td><td>12</td><td>47.5</td><td>31.0 cm</td><td>Wide fit available</td></tr>
+        </tbody>
+      </table>
+      <p class="sec-label">Model-Specific Fit Notes</p>
+      <h2 class="sec-title" style="margin-bottom:32px;">BY SHOE TYPE</h2>
+      <table class="sg-table">
+        <thead><tr><th>Shoe Model</th><th>Fit Type</th><th>Recommendation</th></tr></thead>
+        <tbody>
+          <tr><td>Air Max 90</td><td>True to Size</td><td>Order your normal size</td></tr>
+          <tr><td>Air Force 1</td><td>Runs Large</td><td>Go half a size down</td></tr>
+          <tr><td>Dunk Low</td><td>True to Size</td><td>Order your normal size</td></tr>
+          <tr><td>Jordan 1 Retro High</td><td>Runs Slightly Large</td><td>Go half a size down</td></tr>
+          <tr><td>Nike Pegasus 40</td><td>True to Size</td><td>Order your normal size</td></tr>
+          <tr><td>Nike React Vision</td><td>True to Size</td><td>Order your normal size</td></tr>
+          <tr><td>Nike Blazer Mid 77</td><td>Runs Large</td><td>Go half a size down</td></tr>
+          <tr><td>Nike Free Run 5.0</td><td>True to Size</td><td>Order your normal size</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sg-tips">
+      <div class="sg-tip"><div class="sg-tip-num">01</div><h3>Measure Your Foot</h3><p>Place your foot on a piece of paper and trace it. Measure the longest distance from heel to toe in cm and compare to our chart.</p></div>
+      <div class="sg-tip"><div class="sg-tip-num">02</div><h3>Check Model Notes</h3><p>Different Nike models fit differently. Air Force 1s run big, while Air Max usually fits true to size. Always check our model chart above.</p></div>
+      <div class="sg-tip"><div class="sg-tip-num">03</div><h3>WhatsApp Us</h3><p>Not sure? Just send us a WhatsApp message at +92 310 8282961. We'll guide you to the perfect size before you order — it's that simple.</p></div>
+    </div>
+    <div style="text-align:center;padding:60px 52px;background:var(--red);">
+      <h2 style="font-family:'Bebas Neue';font-size:56px;letter-spacing:3px;margin-bottom:12px;">STILL NOT SURE?</h2>
+      <p style="font-size:14px;color:rgba(255,255,255,.75);margin-bottom:32px;">Our team will personally help you pick the right size. Hit us up on WhatsApp now.</p>
+      <a href="https://wa.me/923108282961" class="btn-outline" target="_blank">💬 WhatsApp: +92 310 8282961</a>
+    </div>
+    <footer style="background:#050505;padding:40px 52px;border-top:1px solid var(--mid);">
+      <div class="fb-bot"><span>© 2026 Premium Pack. All rights reserved.</span><span>Questions? <a href="https://wa.me/923108282961" style="color:var(--red);text-decoration:none;">WhatsApp Us</a></span></div>
+    </footer>
+  </div>
+</div>
+
+<!-- PRODUCT MODAL -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal-box">
+    <button class="modal-x" onclick="closeM()">✕</button>
+    <img class="m-img" id="mImg" src="" alt=""/>
+    <p class="m-name" id="mName"></p>
+    <p class="m-price" id="mPrice"></p>
+    <p class="m-desc" id="mDesc"></p>
+    <p class="sz-lbl">Select Size — US Men's</p>
+    <div class="sz-grid">
+      <button class="sz" onclick="pickSz(this)">7</button>
+      <button class="sz" onclick="pickSz(this)">7.5</button>
+      <button class="sz" onclick="pickSz(this)">8</button>
+      <button class="sz" onclick="pickSz(this)">8.5</button>
+      <button class="sz" onclick="pickSz(this)">9</button>
+      <button class="sz" onclick="pickSz(this)">9.5</button>
+      <button class="sz" onclick="pickSz(this)">10</button>
+      <button class="sz" onclick="pickSz(this)">10.5</button>
+      <button class="sz" onclick="pickSz(this)">11</button>
+      <button class="sz" onclick="pickSz(this)">12</button>
+    </div>
+    <div class="m-actions">
+      <button class="m-add" onclick="addToCart()">Add to Cart</button>
+      <button class="m-wa" onclick="orderWA()" title="Order on WhatsApp">💬</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── LOADER ──
+const loaderFill = document.getElementById('loaderFill');
+let loadVal = 0;
+const loadInt = setInterval(()=>{
+  loadVal += Math.random()*15;
+  if(loadVal >= 100){ loadVal=100; clearInterval(loadInt); setTimeout(()=>{ document.getElementById('loader').classList.add('done'); initFades(); },300); }
+  loaderFill.style.width = loadVal+'%';
+},80);
+
+// ── CURSOR ──
+const cur=document.getElementById('cur'),ring=document.getElementById('ring');
+document.addEventListener('mousemove',e=>{
+  cur.style.left=(e.clientX-5)+'px';cur.style.top=(e.clientY-5)+'px';
+  ring.style.left=(e.clientX-18)+'px';ring.style.top=(e.clientY-18)+'px';
+});
+
+// ── NAVIGATION ──
+function navigate(page){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  document.getElementById('page-'+page).classList.add('active');
+  const navEl = document.getElementById('nav-'+page);
+  if(navEl) navEl.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  setTimeout(initFades,100);
+  if(page==='shop') renderShop();
+  return false;
+}
+
+// ── FADE ON SCROLL ──
+function initFades(){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');}});
+  },{threshold:0.06});
+  document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+}
+
+// ── SEARCH ──
+function toggleSearch(){
+  document.getElementById('searchBar').classList.toggle('open');
+  if(document.getElementById('searchBar').classList.contains('open')) document.getElementById('searchInput').focus();
+}
+function closeSearch(){document.getElementById('searchBar').classList.remove('open');}
+function doSearch(val){
+  if(val.length>2){ navigate('shop'); }
+}
+
+// ── CART ──
+let cart=[];
+let cartTotal=0;
+function openCart(){
+  document.getElementById('cartDrawer').classList.add('open');
+  document.getElementById('drawerOverlay').classList.add('show');
+}
+function closeCart(){
+  document.getElementById('cartDrawer').classList.remove('open');
+  document.getElementById('drawerOverlay').classList.remove('show');
+}
+function renderCart(){
+  const el=document.getElementById('cartItems');
+  const totalEl=document.getElementById('cartTotal');
+  document.getElementById('cartCount').textContent=cart.length;
+  if(cart.length===0){
+    el.innerHTML='<div class="cart-empty"><div class="cart-empty-icon">👟</div><p>Your cart is empty</p></div>';
+    totalEl.textContent='$0'; return;
+  }
+  let total=0;
+  el.innerHTML=cart.map((item,i)=>{
+    total+=parseInt(item.price.replace('$',''));
+    return `<div class="cart-item">
+      <img class="cart-item-img" src="${item.img}" alt="${item.name}"/>
+      <div class="cart-item-info">
+        <p class="cart-item-name">${item.name}</p>
+        <p class="cart-item-size">Size: US ${item.size}</p>
+        <p class="cart-item-price">${item.price}</p>
+      </div>
+      <button class="cart-item-remove" onclick="removeFromCart(${i})">🗑</button>
+    </div>`;
+  }).join('');
+  totalEl.textContent='$'+total;
+  cartTotal=total;
+}
+function removeFromCart(i){
+  cart.splice(i,1);
+  renderCart();
+}
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+// ── MODAL ──
+let currentProduct={};
+function openM(name,price,img,desc){
+  currentProduct={name,price,img,desc};
+  document.getElementById('mName').textContent=name;
+  document.getElementById('mPrice').textContent=price;
+  document.getElementById('mImg').src=img;
+  document.getElementById('mDesc').textContent=desc;
+  document.querySelectorAll('.sz').forEach(b=>b.classList.remove('on'));
+  document.getElementById('modalBg').classList.add('show');
+}
+function closeM(){document.getElementById('modalBg').classList.remove('show');}
+document.getElementById('modalBg').addEventListener('click',e=>{if(e.target.id==='modalBg')closeM();});
+function pickSz(btn){document.querySelectorAll('.sz').forEach(b=>b.classList.remove('on'));btn.classList.add('on');}
+function addToCart(){
+  const sz=document.querySelector('.sz.on');
+  if(!sz){showToast('Please select a size!');return;}
+  cart.push({name:currentProduct.name,price:currentProduct.price,img:currentProduct.img,size:sz.textContent});
+  renderCart();
+  closeM();
+  showToast('✓ Added to Cart!');
+  openCart();
+}
+function orderWA(){
+  const sz=document.querySelector('.sz.on');
+  if(!sz){showToast('Please select a size!');return;}
+  const msg=`Hi! I want to order:\n👟 ${currentProduct.name}\n💰 ${currentProduct.price}\n📏 Size: US ${sz.textContent}\n\nPlease confirm availability.`;
+  window.open('https://wa.me/923108282961?text='+encodeURIComponent(msg),'_blank');
+}
+function toggleWish(btn){
+  btn.classList.toggle('liked');
+  btn.textContent = btn.classList.contains('liked') ? '♥' : '♡';
+  showToast(btn.classList.contains('liked') ? '♥ Added to Wishlist' : 'Removed from Wishlist');
+}
+
+// ── CHECKOUT ──
+function checkoutWA(){
+  if(cart.length===0){showToast('Cart is empty!');return;}
+  let msg='Hi! I want to order:\n\n';
+  cart.forEach((item,i)=>{ msg+=`${i+1}. ${item.name} — Size US ${item.size} — ${item.price}\n`; });
+  msg+=`\nTotal: $${cartTotal}\n\nPlease confirm availability and payment details.`;
+  window.open('https://wa.me/923108282961?text='+encodeURIComponent(msg),'_blank');
+}
+
+// ── NEWSLETTER ──
+function subscribeNL(btn){
+  const input=btn.previousElementSibling;
+  if(!input.value||!input.value.includes('@')){showToast('Enter a valid email!');return;}
+  showToast('🎉 You\'re on the list!');
+  input.value='';
+}
+
+// ── CONTACT FORM ──
+function submitContact(){
+  showToast('✓ Message sent! We\'ll reply soon.');
+}
+
+// ── SHOP PRODUCTS DATA ──
+const allProducts=[
+  {name:'Nike Air Max 90',price:'$189',img:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&h=700&fit=crop&q=88',badge:'Best Seller',cat:'lifestyle',desc:'The iconic Air Max 90 — legendary cushioning meets street-ready style.'},
+  {name:'Nike Dunk Low',price:'$165',img:'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=600&h=700&fit=crop&q=88',badge:'New',cat:'lifestyle',desc:'The Dunk Low — clean, classic, always in demand.'},
+  {name:'Air Force 1 Low',price:'$175',img:'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600&h=700&fit=crop&q=88',badge:'',cat:'lifestyle',desc:'The AF1 — the shoe that never goes out of style.'},
+  {name:'Nike React Vision',price:'$199',img:'https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=600&h=700&fit=crop&q=88',badge:'Limited',cat:'lifestyle',desc:'Futuristic design meets React foam cushioning.'},
+  {name:'Nike Pegasus 40',price:'$135',img:'https://images.unsplash.com/photo-1605408499391-6368c628ef42?w=600&h=700&fit=crop&q=88',badge:'',cat:'running',desc:'Built for runners. Worn by legends. The Pegasus 40.'},
+  {name:'Jordan 1 Retro High',price:'$229',img:'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&h=700&fit=crop&q=88',badge:'New',cat:'basketball',desc:'The iconic Jordan 1 Retro High — heritage meets hype.'},
+  {name:'Nike Air Zoom Tempo',price:'$155',img:'https://images.unsplash.com/photo-1607522370275-f14206abe5d3?w=600&h=700&fit=crop&q=88',badge:'New',cat:'running',desc:'Speed meets style. The Air Zoom Tempo NEXT%.'},
+  {name:'Nike Free Run 5.0',price:'$119',img:'https://images.unsplash.com/photo-1612872087720-bb4b2a7f159f?w=600&h=700&fit=crop&q=88',badge:'',cat:'running',desc:'Barefoot feel. Maximum freedom. The Free Run 5.0.'},
+  {name:'Nike Blazer Mid 77',price:'$145',img:'https://www.ubuy.com.pk/en/producttr/5AUNGXP7I-blazer-mid-77-suede-c1172005-men-s-sports-shoes?srsltid=AfmBOopkWxwOGMIlJ9SYL_OJUE7pJ54pcSYiv4GIxvPh4liMYDDr6cxY',badge:'Hot',cat:'lifestyle',desc:'Old school soul. New school edge. Nike Blazer Mid 77.'},
+  {name:'Nike Metcon 9',price:'$139',img:'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&h=700&fit=crop&q=88',badge:'',cat:'training',desc:'Built for CrossFit and gym training. The Metcon 9.'},
+  {name:'Nike Infinity Run 4',price:'$159',img:'https://images.unsplash.com/photo-1539185441755-769473a23570?w=600&h=700&fit=crop&q=88',badge:'New',cat:'running',desc:'Max cushion, max miles. The Infinity Run 4.'},
+  {name:'Jordan 4 Retro',price:'$249',img:'https://images.unsplash.com/photo-1579338559194-a162d19bf842?w=600&h=700&fit=crop&q=88',badge:'Limited',cat:'basketball',desc:'The legendary Jordan 4 — a collector\'s must-have.'},
+];
+let currentCat='all';
+
+function renderShop(cat){
+  if(cat) currentCat=cat;
+  const grid=document.getElementById('shopGrid');
+  const filtered=allProducts.filter(p=>currentCat==='all'||p.cat===currentCat);
+  document.getElementById('shopCount').textContent='Showing '+filtered.length+' products';
+  grid.innerHTML=filtered.map(p=>`
+    <div class="sp-card" onclick="openM('${p.name}','${p.price}','${p.img}','${p.desc}')">
+      <img src="${p.img}" alt="${p.name}"/>
+      ${p.badge?`<div class="sp-badge">${p.badge}</div>`:''}
+      <div class="sp-info">
+        <p class="sp-name">${p.name}</p>
+        <p class="sp-price">${p.price}</p>
+        <button class="sp-add" onclick="event.stopPropagation();openM('${p.name}','${p.price}','${p.img}','${p.desc}')">Add to Cart</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterCat(btn,cat){
+  document.querySelectorAll('.ftag').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  renderShop(cat);
+}
+
+// Init
+renderShop();
+</script>
+</body>
+</html>
